@@ -1,0 +1,223 @@
+@mixin afterClear($atribute, $value) {
+  content: "";
+  clear: both;
+  display: table;
+  #{$atribute}: $value;
+}
+
+html {
+  font-size: 14px;
+}
+
+* {
+  margin: 0px;
+  border: 0px;
+}
+
+body {
+  margin: 0px 150px;
+}
+
+.header-top {
+  display: grid;
+  grid-template-columns: auto 30%;
+  &-right {
+    transform: translateY(50%);
+    display: flex;
+    i {
+      border: 1px solid #62c6f8;
+      color: #62c6f8;
+      size: 10px;
+      border-radius: 50%;
+      height: fit-content;
+      padding: 3px;
+    }
+  }
+  &-left {
+    display: flex;
+    margin-top: 10px;
+    img,
+    .header-top-logo-content {
+      float: left;
+    }
+  }
+  span,
+  h1 {
+    margin-left: 10px;
+  }
+  &::after {
+    @include afterClear(height, 25px);
+  }
+}
+
+.header-bottom {
+  display: grid;
+  grid-template-columns: auto 150px;
+  border: 1px solid rgb(212, 212, 212);
+  box-sizing: border-box;
+  &-menu {
+    ul {
+      height: 100%;
+      list-style-type: none;
+      padding-left: 0px;
+      a {
+        float: left;
+        text-decoration: none;
+        border-right: 1px solid rgb(212, 212, 212);
+        height: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+      }
+      &::after {
+        @include afterClear(null, null);
+      }
+    }
+  }
+  &-icon {
+    i {
+      border: 1px solid;
+      border-radius: 50%;
+      box-sizing: border-box;
+      margin: 6px 0px 6px 5px;
+      float: right;
+    }
+    .fa-google {
+      color: rgb(247, 54, 63);
+      padding: 5px 6px;
+    }
+    .fa-facebook {
+      color: blue;
+      padding: 5px 8px;
+    }
+    .fa-youtube {
+      color: rgb(247, 54, 63);
+      padding: 5px;
+    }
+  }
+  &::after {
+    @include afterClear(null, null);
+  }
+}
+
+.main-slide {
+  position: relative;
+  left: -150px;
+  &-img {
+    width: 100vw;
+  }
+  &-list {
+    position: absolute;
+    top: 40%;
+    left: 10%;
+    list-style-type: none;
+    &-item {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+  &::after {
+    @include afterClear(margin-bottom, 40px);
+  }
+}
+
+span {
+  float: left;
+  margin-left: 10px;
+}
+
+@mixin title {
+  background-color: #6a79819a;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  box-sizing: border-box;
+  grid-gap: 20px;
+  .main-content-left {
+    &-menu {
+      &-title {
+        @include title();
+      }
+      &-content {
+        .list {
+          padding-left: 28px;
+          &-item {
+            margin: 10px 0px;
+            &-link {
+              text-decoration: none;
+              color: black;
+            }
+          }
+        }
+      }
+      &-bottom {
+        @include title();
+      }
+      &::after {
+        content: "";
+        clear: both;
+        display: table;
+        margin-bottom: 40px;
+      }
+    }
+    &-form {
+      background-color: #6a79819a;
+      form {
+        padding: 10px;
+        box-sizing: border-box;
+        position: relative;
+        input {
+          margin: 10px 0px;
+          height: 30px;
+          width: 100%;
+        }
+        button {
+          background-color: rgb(63, 177, 63);
+          color: white;
+          font-weight: 600;
+          padding: 10px 20px;
+          margin-left: 35%;
+        }
+      }
+    }
+  }
+  &-right {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    box-sizing: border-box;
+    grid-gap: 20px;
+    width: 100%;
+    img {
+      max-width: 100%;
+    }
+  }
+  &::after {
+    @include afterClear(margin-bottom, 20px);
+  }
+}
+
+footer {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: rgba(89, 208, 230, 0.671);
+  width: 100vw;
+  position: absolute;
+  left: 0px;
+  padding-left: 150px;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  ul {
+    padding-left: 18px;
+  }
+  li {
+    margin: 10px 0px;
+  }
+  &::after {
+    @include afterClear(border-top, 1px solid white);
+  }
+}
